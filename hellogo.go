@@ -4,11 +4,22 @@ import (
     "bufio"
     "os"
     "log"
+	"reflect"
 )
 var pl = fmt.Println
 
 func main(){
-    variables()
+    dataTypes()
+}
+
+func dataTypes(){
+    //int, float64, bool, string, rune
+    //Default type 0, 0.0, false, ""
+    pl(reflect.TypeOf(35))
+    pl(reflect.TypeOf(35.43))
+    pl(reflect.TypeOf(false))
+    pl(reflect.TypeOf("35"))
+    pl(reflect.TypeOf('🐵'))
 }
 
 func variables(){
