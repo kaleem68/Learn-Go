@@ -1,44 +1,55 @@
 package main
+
 import (
-    "fmt"
-    "bufio"
-    "os"
-    "log"
+	"fmt"
+	"log"
 	"reflect"
+	"strconv"
 )
+
 var pl = fmt.Println
 
-func main(){
-    dataTypes()
+func main() {
+	casting()
 }
+func casting() {
+	cV1 := 1.7
+	cV2 := int(cV1)
+	pl(cV2)
 
-func dataTypes(){
-    //int, float64, bool, string, rune
-    //Default type 0, 0.0, false, ""
-    pl(reflect.TypeOf(35))
-    pl(reflect.TypeOf(35.43))
-    pl(reflect.TypeOf(false))
-    pl(reflect.TypeOf("35"))
-    pl(reflect.TypeOf('🐵'))
-}
+	cV3 := "342"
+	// Atoi = ASCII to integer
+	cV4, err := strconv.Atoi(cV3)
+	if err == nil {
+		pl(cV4, reflect.TypeOf(cV4))
+	} else {
+		log.Fatal(err)
+	}
 
-func variables(){
-    var vName string = "Kaleem"
-    var v1, v2 = 1.2, 3.4
-    var v3 = "hello"
-    v4 := 2.4
-    v4 = 5.4
-    pl(vName, v1, v2, v3, v4)
-}
+	//Itoa = Integer to ASCII
+	cv5 := strconv.Itoa(32)
+	pl(cv5, reflect.TypeOf(cv5))
 
-func readInputAndDisplayOutput(){
-    pl("What is your name ?")  
-    reader := bufio.NewReader(os.Stdin)
-    name, err := reader.ReadString('\n')
+	//string to float
+	cV6 := "3.1415"
+	floatCV6, err2 := strconv.ParseFloat(cV6, 64)
 
-    if err == nil {
-        pl("Hello",name)
-    } else {
-        log.Fatal(err)
-    }
+	if err2 == nil {
+		pl(floatCV6, reflect.TypeOf(floatCV6))
+	} else {
+		log.Fatal(floatCV6)
+	}
+
+	//string to float cont
+	pie := "3.14"
+	if res, err3 := strconv.ParseFloat(pie, 64); err3 == nil {
+		pl(res, reflect.TypeOf(res))
+	} else {
+		log.Fatal(err3)
+	}
+
+	//float to string: formatting similar to c
+	pieStr := fmt.Sprintf("%f", 3.14)
+	pl(pieStr, reflect.TypeOf(pieStr))
+
 }
