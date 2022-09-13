@@ -8,7 +8,16 @@ import (
 var pl = fmt.Println
 
 func main(){
-    readInputAndDisplayOutput()
+    variables()
+}
+
+func variables(){
+    var vName string = "Kaleem"
+    var v1, v2 = 1.2, 3.4
+    var v3 = "hello"
+    v4 := 2.4
+    v4 = 5.4
+    pl(vName, v1, v2, v3, v4)
 }
 
 func readInputAndDisplayOutput(){
