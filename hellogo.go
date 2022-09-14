@@ -2,22 +2,17 @@ package main
 
 import (
 	"fmt"
-	"unicode/utf8"
+	"time"
 )
 
 var out = fmt.Println
 
 func main() {
-	runes()
+	timeTest()
 }
-func runes() {
-	// In go characters are called runes
-	// Runes are unicodes that represent characters
-	tStr := "abcdefg"
-	out("Rune Count : ", utf8.RuneCountInString(tStr))
-
-	for i, runeVal := range tStr {
-		//Getindex, Rune unicode, character
-		fmt.Printf("%d : %#U, %c\n", i, runeVal, runeVal)
-	}
+func timeTest() {
+	now := time.Now()
+	// Get day, month, year and time data
+	out(now.Day(), now.Month(), now.Year())
+	out(now.Hour(), now.Minute(), now.Second())
 }
