@@ -2,68 +2,86 @@ package main
 
 import (
 	"fmt"
+	"log"
 )
 
 var println = fmt.Println
 
 func main() {
-	slices()
+	// ----- FUNCTIONS -----
+	// func funcName(parameters) returnType {BODY}
+	// If you only need a function in the current package
+	// start with lowercase letter
+	// Letters and numbers in camelcase
+	functions()
 }
-func slices() {
-	//var name []datatype
-	sl1 := make([]string, 3)
-	sl1[0] = "Mon"
-	sl1[1] = "Tue"
+func functions() {
+	//function returning two values
+	a, b := 10, 20
+	println("a =", a, "b =", b)
+	a, b = swap(a, b)
+	println("a =", a, "b =", b)
 
-	println("Length of slice ", len(sl1))
-
-	for _, v := range sl1 {
-		println(v)
+	//function returning error
+	ans, err := getQuotient(5, 1)
+	if err == nil {
+		println("Result ", ans)
+	} else {
+		// println(err)
+		//End of program
+		log.Fatal(err)
 	}
-	// A slice points at an array and you can create a slice
-	// of an array (A slice is a view of an underlying array)
-	// You can have multiple slices point to the same array
-	aArr := [5]int{10, 20, 30, 40, 50}
-	// Start at 0 index up to but not including the 2nd index
-	sl3 := aArr[0:2]
-	println("Slices with first two elements ", sl3)
+	// Function receives unknown number of parameters
+	// Variadic Function
+	println("Sum of numbers: 31, 9, 10, 20, 20, 10 =", sumAll(31, 9, 10, 20, 20, 10))
 
-	//first two items
-	println(aArr[:2])
+	// Pass an array to a function by value
+	oddNumbers := []int{1, 3, 5, 7, 9}
+	println("Sum of odd: [1, 3, 5, 7, 9] =", sumArray(oddNumbers))
 
-	//last two items
-	println(aArr[len(aArr)-2:])
+	//pass by ref: modify array value inside function
+	println("before modify array[0]", oddNumbers)
+	modifyArray(oddNumbers)
+	println("after modify array[0]", oddNumbers)
 
-	//changing the slice changes the array
-	sl3[0] = -1
-	println(aArr)
+	//pass by val: changing primitive inside function
+	value := 5
+	println("before modify value 5:", value)
+	changeVal(value)
+	println("after modify value 5:", value)
 
-	// similarly changing the array changes the slice
-	aArr[0] = 21
-	println("slice ", sl3)
-	println("array ", aArr)
+}
+func swap(a, b int) (int, int) {
+	return b, a
+}
+func getQuotient(x float64, y float64) (float64, error) {
+	if y == 0 {
+		//return error with a dummy value
+		return 0, fmt.Errorf("Cannot be divide by zero")
+	}
+	return x / y, nil
+}
 
-	//appending value to slice overwrites the value in the array
-	sl3 = append(sl3, 100)
-	println("append modified array ", aArr)
-	println("appended slice ", sl3)
-	sl3 = append(sl3, 101)
-	sl3 = append(sl3, 102)
-	sl3 = append(sl3, 103)
-	sl3 = append(sl3, 104)
-	sl3 = append(sl3, 105)
-	sl3 = append(sl3, 106)
-	sl3 = append(sl3, 107)
+func sumAll(nums ...int) int {
+	sum := 0
+	for _, num := range nums {
+		sum += num
+	}
+	return sum
+}
 
-	// append slice beyond array limit
-	println("slice ", sl3, len(sl3))
-	// appending the slice does not grow the array limits
-	println("array ", aArr, len(aArr))
+func sumArray(nums []int) (sum int) {
+	sum = 0
+	for _, num := range nums {
+		sum += num
+	}
+	return
+}
+func modifyArray(nums []int) {
+	nums[0] = 99
+}
 
-	// Printing empty slices will return nils which show
-	// as empty slices
-	emptySlices := make([]string, 6)
-	println("empty slice ", emptySlices[0])
-	println("emptySlices[0] :", emptySlices[0])
-
+func changeVal(val int) int {
+	val += 1
+	return val
 }
