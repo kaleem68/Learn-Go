@@ -11,19 +11,29 @@ func main() {
 }
 
 func pointers() {
-	// Pointers: basics
-	myValue := 10
-	println("value", myValue)
-	println("address", &myValue)
-	var valuePtr *int = &myValue
-	println("address ", valuePtr)
+	// ----- POINTERS -----
 
-	println("before change ", myValue)
-	changeValuePtr(&myValue)
-	println("after change ", myValue)
+	// You can pass by reference with the &
+	// (Address of Operator)
+	// Print amount and address for amount in memory
+	f4 := 10
+	println("f4 value ", f4)
+	println("f4 address ", &f4)
+
+	//store address of variable
+	var f4Ptr *int = &f4
+	println("f4Ptr address", f4Ptr)
+	println("f4Ptr address value", *f4Ptr)
+	*f4Ptr++
+	println("f4Ptr new address value", *f4Ptr)
+
+	pArray := [4]int{1, 2, 3, 4}
+	doubleValuesPtr(&pArray)
+	println(pArray)
 
 }
-
-func changeValuePtr(valuePtr *int) {
-	*valuePtr += 1
+func doubleValuesPtr(arrPtr *[4]int) {
+	for i := 0; i < 4; i++ {
+		arrPtr[i] *= 2
+	}
 }
