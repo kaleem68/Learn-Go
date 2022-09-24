@@ -2,25 +2,30 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 var println = fmt.Println
 
-func printTo15() {
-	for i := 1; i <= 15; i++ {
-		println("Fun1 ", i)
-	}
+func nums1(mychannel chan int) {
+	mychannel <- 1
+	mychannel <- 2
 }
-func printTo10() {
-	for i := 1; i <= 10; i++ {
-		println("Fun2 ", i)
-	}
+func nums2(mychannel2 chan int) {
+	mychannel2 <- 4
+	mychannel2 <- 3
 }
 
 // concurrency / go routine
 func main() {
-	go printTo15()
-	go printTo10()
-	time.Sleep(3 * time.Second)
+	channel1 := make(chan int)
+	go nums1(channel1)
+
+	channel2 := make(chan int)
+	go nums2(channel2)
+
+	println(<-channel1)
+	println(<-channel2)
+	println(<-channel1)
+	println(<-channel2)
+
 }
