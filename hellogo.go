@@ -6,32 +6,24 @@ import (
 
 var println = fmt.Println
 
-type Person struct {
-	name string
-	age  int
+type Contact struct {
+	fName, lName, phone string
+}
+type Business struct {
+	name    string
+	address string
+	contact Contact
 }
 
-func (p *Person) SetName(pName string) {
-	p.name = pName
-}
-func (p *Person) SetAge(pAge int) {
-	p.age = pAge
-}
-
-func (p *Person) GetName() string {
-	return p.name
-}
-func (p *Person) GetAge() int {
-	return p.age
+func (b *Business) DisplayInfo() {
+	fmt.Printf("business name: %s, person name: %s, %s \n", b.name, b.contact.fName, b.contact.lName)
 }
 
 func main() {
-	BasicStruct()
+	Composition()
 }
-func BasicStruct() {
-	kaleem := Person{"kaleem", 22}
-	fmt.Printf("name %s, age %d \n", kaleem.GetName(), kaleem.GetAge())
-	kaleem.SetName("Kaleemullah")
-	kaleem.SetAge(23)
-	fmt.Printf("name %s, age %d \n", kaleem.GetName(), kaleem.GetAge())
+func Composition() {
+	contactOne := Contact{"Kaleem", "Niz", "0300"}
+	BusinessOne := Business{"Software", "Remote", contactOne}
+	BusinessOne.DisplayInfo()
 }
