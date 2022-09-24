@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main5() {
 	i := 1
 	for i <= 10 {
 		fmt.Printf("%d ", i)
