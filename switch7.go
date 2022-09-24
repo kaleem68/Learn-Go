@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func main() {
+func main7() {
 
 	day := "Wed"
 	basicSwitch(day)
