@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main9() {
 	s := make([]string, 3)
 	fmt.Printf("Size %d and capacity %d \n", len(s), cap(s))
 	s[0] = "a"
