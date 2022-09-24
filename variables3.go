@@ -7,7 +7,7 @@ type Person struct {
 	age  int
 }
 
-func main() {
+func main3() {
 	variable()
 }
 func variable() {
