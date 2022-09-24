@@ -1,29 +1,26 @@
 package main
 
 import (
+	date "example/project/mypackage"
 	"fmt"
+	"log"
 )
 
 var println = fmt.Println
 
-type Contact struct {
-	fName, lName, phone string
-}
-type Business struct {
-	name    string
-	address string
-	contact Contact
-}
-
-func (b *Business) DisplayInfo() {
-	fmt.Printf("business name: %s, person name: %s, %s \n", b.name, b.contact.fName, b.contact.lName)
-}
-
 func main() {
-	Composition()
-}
-func Composition() {
-	contactOne := Contact{"Kaleem", "Niz", "0300"}
-	BusinessOne := Business{"Software", "Remote", contactOne}
-	BusinessOne.DisplayInfo()
+	date := date.MyDate{}
+	dateError := date.SetDay(14)
+	if dateError != nil {
+		log.Fatal(dateError)
+	}
+	monthError := date.SetMonth(1)
+	if monthError != nil {
+		log.Fatal(monthError)
+	}
+	yearError := date.SetYear(2020)
+	if yearError != nil {
+		log.Fatal(yearError)
+	}
+	println(date.Day(), date.Month(), date.Year())
 }
