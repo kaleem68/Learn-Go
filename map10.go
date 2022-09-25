@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func main() {
+func main10() {
 	dldMarks := make(map[string]int)
 	dldMarks["aman"] = 18
 	dldMarks["kaleem"] = 29
