@@ -8,10 +8,7 @@ An step by step guide to learn go.
 - Programming with Google Go Specialization: https://www.coursera.org/specializations/google-golang
 - Go by examples: https://gobyexample.com/
 
-## Website
  ### Effective Go
- - https://go.dev/doc/effective_go
- 
- ## Books
-  ### Go Programming Language
-   - https://www.amazon.com/Programming-Language-Addison-Wesley-Professional-Computing/dp/0134190440
+  - https://go.dev/doc/effective_go
+ ### Go Programming Language
+  - https://www.amazon.com/Programming-Language-Addison-Wesley-Professional-Computing/dp/0134190440
